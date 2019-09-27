@@ -1,0 +1,11 @@
+<form [formGroup]="editBookForm" *ngIf='book$ | async'>
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName='name'>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Author" formControlName='author'>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button color="primary" (click)='saveBook()'>Save changes</button>
+</form>

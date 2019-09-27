@@ -1,0 +1,4 @@
+<mat-list *ngFor='let book of books'>
+  <app-book-item [book]='book' (click)='editBook(book)'></app-book-item>
+  <mat-divider></mat-divider>
+</mat-list>

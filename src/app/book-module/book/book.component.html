@@ -1,0 +1,11 @@
+<div class="container">
+      <div class='col'>
+        <app-add-book (addBookAction)='addBook($event)'></app-add-book>
+      </div>
+  <div class='col'>
+        <app-book-list [books]='books$ | async' (editBookAction)='editBook($event)'></app-book-list>
+      </div>
+      <div class='col'>
+        <app-edit-book (saveBookAction)='saveBook($event)'></app-edit-book>
+      </div>
+</div>

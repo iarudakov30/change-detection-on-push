@@ -1,0 +1,11 @@
+<form [formGroup]="addBookForm">
+  <mat-form-field>
+    <input matInput placeholder="Name" formControlName='name'>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <input matInput placeholder="Author" formControlName='author'>
+  </mat-form-field>
+</form>
+
+<button mat-raised-button color="primary" (click)='addBook()'>Add book</button>
