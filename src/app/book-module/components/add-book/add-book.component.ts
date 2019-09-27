@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { BookService } from '../../book.service';
 
 @Component({
   selector: 'app-add-book',
@@ -13,17 +14,10 @@ export class AddBookComponent implements OnInit {
   @Output() addBookAction: EventEmitter<any> = new EventEmitter<any>();
   addBookForm: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, ) { }
+  constructor(public bookService: BookService) { }
 
   ngOnInit() {
-    this.createAddBookForm();
-  }
-
-  private createAddBookForm() {
-    this.addBookForm = this.formBuilder.group({
-      name: new FormControl('', null, null),
-      author: new FormControl('', null, null),
-    });
+    this.addBookForm = this.bookService.getBookForm();
   }
 
   public addBook() {

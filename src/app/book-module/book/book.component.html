@@ -1,11 +1,50 @@
+<mat-toolbar>
+  <mat-toolbar-row><b>To work successfully with OnPush CD without problems follow this steps:</b></mat-toolbar-row>
+  <mat-toolbar-row>1. Keep business logic in "container" and rendered logic in "component" </mat-toolbar-row>
+  <mat-toolbar-row>2. Keep in service huge data calculating and subscriptions </mat-toolbar-row>
+  <mat-toolbar-row>3. Work in dynamic programming flow, avoid ".subscribe()" or use it only when needed </mat-toolbar-row>
+  <mat-toolbar-row>4. Get and keep data in container as Observable streams </mat-toolbar-row>
+  <mat-toolbar-row>5. Render data in template or throw it to child component via "async" pipe </mat-toolbar-row>
+  <mat-toolbar-row>6. Take data from parent component via @Input() </mat-toolbar-row>
+  <mat-toolbar-row>7. Add 'changeDetection: ChangeDetectionStrategy.OnPush' to @Component() meta data</mat-toolbar-row>
+  <mat-toolbar-row>8. Use *ngIf in forms/tables while you data is loading</mat-toolbar-row>
+  <mat-toolbar-row>9. Do not mutate the data directly, use BehaviorSubject or similar</mat-toolbar-row>
+</mat-toolbar>
+<br>
+<mat-toolbar>
+  <span>Click on book for editing. Last book in the list: <b>{{ lastEditedBook ? lastEditedBook.name + ' - ' + lastEditedBook.author : '-' }}</b> </span>
+</mat-toolbar>
+
 <div class="container">
-      <div class='col'>
-        <app-add-book (addBookAction)='addBook($event)'></app-add-book>
-      </div>
   <div class='col'>
-        <app-book-list [books]='books$ | async' (editBookAction)='editBook($event)'></app-book-list>
-      </div>
-      <div class='col'>
-        <app-edit-book (saveBookAction)='saveBook($event)'></app-edit-book>
-      </div>
+    <app-add-book (addBookAction)='addBook($event)'></app-add-book>
+  </div>
+
+  <div class='col'>
+    <app-book-list [books]='books$ | async' (editBookAction)='editBook($event)'></app-book-list>
+  </div>
+
+  <div class='col'>
+    <app-edit-book (saveBookAction)='saveBook($event)'></app-edit-book>
+  </div>
 </div>
+
+<mat-toolbar>
+  <span>You could add/edit books and see in the console the books list date after 10 and 20 sec </span>
+</mat-toolbar>
+<br>
+<mat-toolbar>
+<span>This data is got from <b>BookService</b> from subscription:</span>
+  <ul *ngFor='let book of bookService.books'>
+    <li><span>{{ book.name }} - {{ book.author }}</span></li>
+  </ul>
+</mat-toolbar>
+<br>
+<mat-toolbar>
+  <button mat-raised-button color="primary" (click)='increaseCounter()'>Increase counter</button>
+  <app-mutable-example [directMutableData]='directMutableData'></app-mutable-example>
+</mat-toolbar>
+
+
+
+

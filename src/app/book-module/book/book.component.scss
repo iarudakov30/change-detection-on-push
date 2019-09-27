@@ -1,9 +1,8 @@
 .container {
-  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .col {
   padding: 10px;
-  width: 27%;
-  display: inline-block;
 }
